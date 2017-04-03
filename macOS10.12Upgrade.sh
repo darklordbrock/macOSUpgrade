@@ -55,7 +55,16 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 ##Enter 0 for Full Screen, 1 for Utility window (screenshots available on GitHub)
-userDialog=0
+if [ "$4" != "" ];then
+    userDialog=$4
+	else
+		userDialog=0
+fi
+
+if [ "$userDialog" == "" ]; then
+	echo "Error:  userDialog not set."
+	exit 1
+fi
 
 ##Title to be used for userDialog (only applies to Utility Window)
 title="macOS Sierra Upgrade"
