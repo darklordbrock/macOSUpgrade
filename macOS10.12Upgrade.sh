@@ -54,6 +54,10 @@
 # USER VARIABLES
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
+##Installer Location
+
+macOSinstallerAppPath="/Users/Shared/Install macOS Sierra.app"
+
 ##Enter 0 for Full Screen, 1 for Utility window (screenshots available on GitHub)
 if [ "$4" != "" ];then
     userDialog=$4
@@ -141,6 +145,7 @@ fi
 
 ## Clean up files
 /bin/rm -fdr /Users/Shared/Install\ macOS\ Sierra.app
+/bin/rm -fdr ${macOSinstallerAppPath}
 /bin/sleep 2
 /usr/local/jamf/bin/jamf recon
 
