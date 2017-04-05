@@ -85,6 +85,25 @@ icon=/Users/Shared/Install\ macOS\ Sierra.app/Contents/Resources/InstallAssistan
 # SYSTEM CHECKS
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
+##Check if installer is present
+if [ -d /Users/Shared/Install\ macOS\ Sierra.app ]; then
+    installerPresent="OK"
+    /bin/echo "Installer present: OK - the installer is in /Users/Shared"
+else
+    installerPresent="ERROR"
+    /bin/echo "Installer present: ERROR - the installer is not in /Users/Shared"
+fi
+
+##Check if Disk is encrypting
+encryption=$( diskutil cs list | grep "Conversion " )
+if [[ ${encryption} == *"Complete"* ]]; then
+    encStatus="OK"
+    /bin/echo "Encryption Check: OK - Not Encrypting"
+else
+    encStatus="ERROR"
+    /bin/echo "Encryption Check: ERROR - Encryption In Process"
+fi
+
 ##Check if device is on battery or ac power
 pwrAdapter=$( /usr/bin/pmset -g ps )
 if [[ ${pwrAdapter} == *"AC Power"* ]]; then
